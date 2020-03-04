@@ -1,8 +1,9 @@
 const express = require('express'),
-    router = express.Router(),
-    indexController = require('../controllers');
-    
-router.route('/').get(indexController.dashboard);
+    router = express.Router();
+
+router.get('/', (req, res) => {
+    res.send('Blog API with express js');
+});
 router.use('/articles', require('./articles'));
 
 module.exports = router;
