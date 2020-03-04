@@ -1,7 +1,7 @@
 const db = require('./../connection/db');
 
-const indexArticles = (_req, res, next) => {
-    db.query('SELECT * FROM articles', (err, articles) => {
+const indexComments = (_req, res, next) => {
+    db.query('SELECT * FROM comments', (err, comments) => {
         if (err) {
             return next(err);
         }
@@ -12,7 +12,7 @@ const indexArticles = (_req, res, next) => {
                         code: 0,
                         message: 'success',
                     },
-                    data: articles
+                    data: comments
                 });
             }
         })
@@ -20,4 +20,4 @@ const indexArticles = (_req, res, next) => {
     
 }
 
-module.exports = { indexArticles };
+module.exports = { indexComments };
