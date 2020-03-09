@@ -1,10 +1,7 @@
-const db = require('./../connection/db');
+const articleModel = require('./../models/articles');
 
-const indexArticles = (_req, res, next) => {
-    db.query('SELECT * FROM articles', (err, articles) => {
-        if (err) {
-            return next(err);
-        }
+const indexArticles = (req, res) => {
+    articleModel.getAllArticles((err, articles) => {
         res.format({
             json: () => {
                 res.json({
@@ -15,9 +12,8 @@ const indexArticles = (_req, res, next) => {
                     data: articles
                 });
             }
-        })
+        });
     });
-    
 }
 
 module.exports = { indexArticles };
